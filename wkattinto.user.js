@@ -1,19 +1,26 @@
 // ==UserScript==
 // @name           Igazgatoi kattinto program
-// @namespace      http://example.org
 // @description    Kattint helyetted a tovabbkepzesen
-// @version        1.0.0
-// @downloadURL    https://github.com/solymosi/npu/raw/master/npu.user.js
+// @version        2.0.0
 // @include        http://*menedzserpraxis*/*archiv*/*
+// @downloadURL    https://example.com/path/to/igazgatoi-kattinto.user.js
+// @updateURL      https://example.com/path/to/igazgatoi-kattinto.meta.js
+// @grant          none
+// @run-at         document-idle
 // ==/UserScript==
 
+function scheduleClick() {
+    var rand = Math.floor(Math.random() * 9) + 1;
+    setTimeout(function() {
+        var btn = document.getElementById("imWatchingButton");
+        if (btn) {
+            btn.click();
+            console.log('kattintott (' + rand + ' perc múlva újra)');
+        } else {
+            console.log('nincs gomb (' + rand + ' perc múlva újra próbálom)');
+        }
+        scheduleClick();
+    }, rand * 60000);
+}
 
-setInterval(function() {
-    function generalas() {
-        var min = 1,
-            max = 9;
-        var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 1 - 9
-    };
-    document.getElementById("imWatchingButton").click();
-    console.log('kattintott');
-}, rand * 60000);
+scheduleClick();
