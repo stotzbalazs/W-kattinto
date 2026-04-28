@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name           Igazgatoi kattinto program
 // @description    Kattint helyetted a tovabbkepzesen
-// @version        2.1.0
-// @include        http://*menedzserpraxis*/*archiv*/*
-// @downloadURL    https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
-// @updateURL      https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
+// @version        2.3.0
+// @include        *://*menedzserpraxis*/*archiv*/*
 // @grant          none
 // @run-at         document-idle
+// @downloadURL    https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
+// @updateURL      https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
 // ==/UserScript==
 
 function findButton() {
@@ -17,13 +17,14 @@ function findButton() {
 
 function scheduleClick() {
     var rand = Math.floor(Math.random() * 9) + 1;
+    console.log('várakozás: ' + rand + ' perc');
     setTimeout(function() {
         var btn = findButton();
         if (btn) {
             btn.click();
-            console.log('kattintott (' + rand + ' perc múlva újra)');
+            console.log('kattintott');
         } else {
-            console.log('nincs gomb (' + rand + ' perc múlva újra próbálom)');
+            console.log('nincs gomb');
         }
         scheduleClick();
     }, rand * 60000);
