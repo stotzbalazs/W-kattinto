@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Igazgatoi kattinto program
 // @description    Kattint helyetted a tovabbkepzesen
-// @version        2.3.0
+// @version        2.4.0
 // @include        *://*menedzserpraxis*/*archiv*/*
 // @grant          none
 // @run-at         document-idle
@@ -16,8 +16,13 @@ function findButton() {
 }
 
 function scheduleClick() {
-    var rand = Math.floor(Math.random() * 9) + 1;
-    console.log('várakozás: ' + rand + ' perc');
+    var minMs = 1 * 60000;  // 1 perc
+    var maxMs = 9 * 60000;  // 9 perc
+    var delay = Math.random() * (maxMs - minMs) + minMs;
+    
+    var sec = Math.round(delay / 1000);
+    console.log('várakozás: ' + Math.floor(sec / 60) + ' perc ' + (sec % 60) + ' másodperc');
+    
     setTimeout(function() {
         var btn = findButton();
         if (btn) {
@@ -27,7 +32,7 @@ function scheduleClick() {
             console.log('nincs gomb');
         }
         scheduleClick();
-    }, rand * 60000);
+    }, delay);
 }
 
 scheduleClick();
