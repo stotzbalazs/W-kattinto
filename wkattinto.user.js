@@ -3,8 +3,8 @@
 // @description    Kattint helyetted a tovabbkepzesen
 // @version        2.0.0
 // @include        http://*menedzserpraxis*/*archiv*/*
-// @downloadURL    https://example.com/path/to/igazgatoi-kattinto.user.js
-// @updateURL      https://example.com/path/to/igazgatoi-kattinto.meta.js
+// @downloadURL    https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
+// @updateURL      https://raw.githubusercontent.com/stotzbalazs/W-kattinto/master/wkattinto.user.js
 // @grant          none
 // @run-at         document-idle
 // ==/UserScript==
